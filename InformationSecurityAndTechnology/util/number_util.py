@@ -13,26 +13,33 @@ class NumberUtil:
     # 数字逆
     @staticmethod
     def inverse(num, modulo):
+        ret = 0
         if num == 0:
             return 0
 
         if modulo == 0:
             raise Exception("modulo can not be 0!")
 
-        ret = 1
+        # 小数情况,先取倒数
+        if -1 < num < 1:
+            num = NumberUtil.reciprocal(num)
 
-        # 小数情况,取倒数
-
-        # print("Total Employee %d" % MatrixUtil.empCount)
+        return ret
 
     # 求倒数
     @staticmethod
     def reciprocal(num):
         return np.reciprocal(float(num))
 
+    # 求模
+    @staticmethod
+    def modulo(num, modulo):
+        return np.mod(num, modulo)
+
 
 if __name__ == "__main__":
-    print(NumberUtil.reciprocal(5))
+    print("reciprocal =%d" % NumberUtil.reciprocal(5))
+    print("modulo =%d" % NumberUtil.modulo(-5, 3))
 
     # def displayEmployee(self):
     #     print("Name : ", self.name, ", Salary: ", self.salary)
