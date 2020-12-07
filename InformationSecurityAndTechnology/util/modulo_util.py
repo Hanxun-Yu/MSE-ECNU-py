@@ -20,15 +20,12 @@ class ModuloUtil:
         :return:
         """
         ret = 0
-        # print("numFractionInverse %f/%f" % (numerator, denominator))
         if numerator == 0:
             return 0
         if modulo == 0:
             raise Exception("modulo can not be 0!")
         if denominator == 0:
             raise Exception("denominator can not be 0!")
-        if -1 < numerator < 1 or -1 < denominator < 1:
-            raise Exception("numerator,denominator do not accept decimals!")
 
         fr = fra.Fraction(numerator, denominator)
         if fr.denominator != 1:
@@ -52,8 +49,6 @@ class ModuloUtil:
             return 0
         if modulo == 0:
             raise Exception("modulo can not be 0!")
-        if -1 < num < 1:
-            raise Exception("do not accept decimals!")
         if np.gcd(num, modulo) != 1:
             raise Exception("gcd(a,m) != 1, a can not inverse")
 
@@ -112,13 +107,15 @@ class ModuloUtil:
         """
         mat = np.delete(mat, i, axis=0)
         mat = np.delete(mat, j, axis=1)  # axis=1 删除列，axis=0 删除行
-        det = np.linalg.det(mat)
-        # print(mat)
+        det = ModuloUtil.matrixDet(mat)
         if (i + j) % 2 != 0:
             det *= -1
-        det = round(det)
-        # print("A_", i, j, "=", det)
         return det
+
+    @staticmethod
+    def matrixDet(mat) -> int:
+        # np.det会返回小数，四舍五入即可
+        return int(round(np.linalg.det(mat)))
 
     @staticmethod
     def matrixModuloInverse(mat: np.matrix, modulo: int) -> np.matrix:
@@ -129,7 +126,7 @@ class ModuloUtil:
         :return:
         """
         adjugateMatrix = ModuloUtil.matrixAdjugate(mat)
-        det = np.linalg.det(mat)
+        det = ModuloUtil.matrixDet(mat)
         if det == 0:
             raise Exception("matrix det is 0, has not Inverse!")
 
@@ -140,7 +137,7 @@ class ModuloUtil:
         retMatArr = np.arange(row * col).reshape(row, col)
         for i in range(0, row):
             for j in range(0, col):
-                retMatArr[i][j] = ModuloUtil.numFractionModulo(int(accArr[i][j]), int(det), modulo)
+                retMatArr[i][j] = ModuloUtil.numFractionModulo(int(accArr[i][j]), det, modulo)
 
         ret = np.mat(retMatArr)
         return ret
