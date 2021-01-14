@@ -142,11 +142,29 @@ class ModuloUtil:
         ret = np.mat(retMatArr)
         return ret
 
+    @staticmethod
+    def matrixModuloDot(matA: np.matrix, matB: np.matrix, modulo: int) -> np.matrix:
+        ret = np.dot(matA, matB)
+        retArr = ret.tolist()
+        for i in range(len(retArr)):
+            retArr[i] = ModuloUtil.numModulo(retArr[i], modulo)
+
+        return np.mat(retArr)
+
 
 if __name__ == "__main__":
+    # for row in K:
+    #     print("row:" + str(row))
+    #     for col in row:
+    #         print("col:"+str(col))
+
+    # exit()
+
+    # 矩阵模逆
     K = np.mat([[17, 21, 2],
                 [17, 18, 2],
                 [5, 21, 19]], int)
     print("K:\n", K)
     # print("K_adjugate:\n", ModuloUtil.matrixAdjugate(K))
     print("K_inverse_modulo:\n", ModuloUtil.matrixModuloInverse(K, 26))
+    exit()
