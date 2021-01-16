@@ -4,18 +4,26 @@
 # @Email   : 
 # @File    : homework3.py
 # @Software: PyCharm
+"""
+破译为吉尼亚密码
+求希尔密码的加密矩阵K
+"""
 
 import char_table as c_t
 import modulo_util as m_u
 import numpy as np
 import numpy_util as n_u
 
+ct = c_t.CharTable()
+mu = m_u.ModuloUtil
+nu = n_u.NumpyUtil()
+
 
 def homework_3_1():
     # 破译为吉尼亚密码  密文
     # 网页工具
-    ct = c_t.CharTable()
-    mu = m_u.ModuloUtil
+    return
+
 
 
 def homework_3_2():
@@ -23,9 +31,6 @@ def homework_3_2():
         求希尔密码的加密矩阵K
     :return:
     '''
-    ct = c_t.CharTable()
-    mu = m_u.ModuloUtil
-    nu = n_u.NumpyUtil()
 
     plaintext = "breathtaking"
     cipher = "RUPOTENTOSUP"

@@ -34,7 +34,7 @@ class CharTable:
             ret.append(self.encode_char(c))
         return ret
 
-    def decode_to_string(self, arr: list) -> str:
+    def decode_to_string(self, arr: list or np.ndarray) -> str:
         ret = ''
         for i, cIndex in enumerate(arr):
             ret += (self.decode_to_char(cIndex))
@@ -59,4 +59,3 @@ if __name__ == "__main__":
 
     # print(ct.decode_to_string([0, 1, 2]))
     # print(ct.decode_to_charArr([0, 1, 2]))
-

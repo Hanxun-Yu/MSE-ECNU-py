@@ -151,6 +151,16 @@ class ModuloUtil:
 
         return np.mat(retArr)
 
+    @staticmethod
+    def powModulo(a, exp, mod):
+        fx = 1
+        while exp > 0:
+            if (exp & 1) == 1:
+                fx = ((fx * a) % mod)
+            a = (a * a) % mod
+            exp = exp >> 1
+        return fx
+
 
 if __name__ == "__main__":
     # for row in K:
