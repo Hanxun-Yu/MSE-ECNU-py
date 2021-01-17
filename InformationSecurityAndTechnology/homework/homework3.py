@@ -32,8 +32,8 @@ def homework_3_2():
     :return:
     '''
 
-    plaintext = "breathtaking"
-    cipher = "RUPOTENTOSUP"
+    plaintext = "thanksgiving"
+    cipher = "UITVDCEZOJRH"
 
     # 明文转字符码
     plaintextEncodedArr = ct.encode_string(plaintext)

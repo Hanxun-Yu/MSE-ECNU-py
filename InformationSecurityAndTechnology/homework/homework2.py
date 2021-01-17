@@ -157,6 +157,7 @@ def homework_2_2():
 
 
 
+
 if __name__ == "__main__":
     # homework_2_1()
     homework_2_2()

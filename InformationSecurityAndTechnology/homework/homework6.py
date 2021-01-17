@@ -38,7 +38,7 @@ def homework_6_1(aArr, mArr):
     for i in range(r):
         M *= m[i]
 
-    # print(M)
+    print(M)
     for i in range(r):
         M_i = M / m[i]
         # print("M_i:", M_i)
@@ -83,7 +83,7 @@ def homework_6_2():
 
 
 if __name__ == "__main__":
-    a = [12, 9, 23]
-    m = [25, 26, 27]
+    a = [3, 5, 7]
+    m = [31, 41, 47]
     print(homework_6_1(a, m))
     # homework_6_2()
